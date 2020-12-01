@@ -9,7 +9,7 @@
 		"type": "CosmosDbSqlApiCollection",
 		"schema": {},
 		"typeProperties": {
-			"collectionName": "ohteamch3"
+			"collectionName": "team1challenge3"
 		}
 	}
 }
