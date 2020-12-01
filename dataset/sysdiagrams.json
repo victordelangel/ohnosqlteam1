@@ -1,0 +1,40 @@
+{
+	"name": "sysdiagrams",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "principal_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "diagram_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "version",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "definition",
+				"type": "varbinary"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "sysdiagrams"
+		}
+	}
+}

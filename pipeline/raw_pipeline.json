@@ -1,0 +1,673 @@
+{
+	"name": "raw_pipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "Rawcopy_cartitem",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "rawcopy_item",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "CosmosDbSqlApiSink",
+						"writeBehavior": "insert"
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "Cartitem",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "CosmosDbSqlApiCollection1",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "rawcopy_category",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "rawcopy_user",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "CosmosDbSqlApiSink",
+						"writeBehavior": "insert"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"sink": {
+									"path": "$['UserId']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['Name']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['Email']"
+								}
+							},
+							{
+								"source": {
+									"name": "CategoryId",
+									"type": "Int32"
+								},
+								"sink": {
+									"path": "$['CategoryId']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['Personality']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['id']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['_rid']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['_self']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['_etag']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['_attachments']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['_ts']"
+								}
+							},
+							{
+								"source": {
+									"name": "CategoryName",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['CategoryName']"
+								}
+							},
+							{
+								"source": {
+									"name": "Description",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['Description']"
+								}
+							},
+							{
+								"source": {
+									"name": "Products",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['Products']"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "category",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "CosmosDbSqlApiCollection1",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "rawcopy_event",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Rawcopy_cartitem",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "rawcopy_itemaggregate",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "rawcopy_orderdetails",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "CosmosDbSqlApiSink",
+						"writeBehavior": "insert"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"sink": {
+									"path": "$['UserId']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['Name']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['Email']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['CategoryId']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['Personality']"
+								}
+							},
+							{
+								"source": {
+									"name": "id",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['id']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['_rid']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['_self']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['_etag']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['_attachments']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['_ts']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['CategoryName']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['Description']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['Products']"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Event",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "CosmosDbSqlApiCollection1",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "rawcopy_item",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "rawcopy_category",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "CosmosDbSqlApiSink",
+						"writeBehavior": "insert"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"sink": {
+									"path": "$['UserId']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['Name']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['Email']"
+								}
+							},
+							{
+								"source": {
+									"name": "CategoryId",
+									"type": "Int32"
+								},
+								"sink": {
+									"path": "$['CategoryId']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['Personality']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['id']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['_rid']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['_self']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['_etag']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['_attachments']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['_ts']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['CategoryName']"
+								}
+							},
+							{
+								"source": {
+									"name": "Description",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['Description']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['Products']"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "item",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "CosmosDbSqlApiCollection1",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "rawcopy_itemaggregate",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "rawcopy_item",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "CosmosDbSqlApiSink",
+						"writeBehavior": "insert"
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "itemaggregate",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "CosmosDbSqlApiCollection1",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "rawcopy_orderdetails",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "rawcopy_orders",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "CosmosDbSqlApiSink",
+						"writeBehavior": "insert"
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "orderdetails",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "CosmosDbSqlApiCollection1",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "rawcopy_orders",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "rawcopy_item",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "CosmosDbSqlApiSink",
+						"writeBehavior": "insert"
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "orders",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "CosmosDbSqlApiCollection1",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "rawcopy_user",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "CosmosDbSqlApiSink",
+						"writeBehavior": "insert"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "UserId",
+									"type": "Int32"
+								},
+								"sink": {
+									"path": "$['UserId']"
+								}
+							},
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['Name']"
+								}
+							},
+							{
+								"source": {
+									"name": "Email",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['Email']"
+								}
+							},
+							{
+								"source": {
+									"name": "CategoryId",
+									"type": "Int32"
+								},
+								"sink": {
+									"path": "$['CategoryId']"
+								}
+							},
+							{
+								"source": {
+									"name": "Personality",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['Personality']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['Column_1']"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "user",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "CosmosDbSqlApiCollection1",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
