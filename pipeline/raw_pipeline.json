@@ -1030,10 +1030,120 @@
 							},
 							{
 								"source": {
-									"name": "Type"
+									"name": "type"
 								},
 								"sink": {
 									"path": "$['Type']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['id']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['_rid']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['_self']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['_etag']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['_attachments']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['_ts']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['OrderId']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['OrderDate']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['FirstName']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['LastName']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['Address']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['City']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['State']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['PostalCode']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['Country']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['Phone']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['SMSOptIn']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['SMSStatus']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['ReceiptUrl']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['Total']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['PaymentTransactionId']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['HasBeenShipped']"
 								}
 							}
 						]
