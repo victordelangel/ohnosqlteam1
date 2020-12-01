@@ -36,56 +36,8 @@
 						"type": "TabularTranslator",
 						"mappings": [
 							{
-								"source": {
-									"name": "CartItemId",
-									"type": "String"
-								},
 								"sink": {
-									"path": "$['CartItemId']"
-								}
-							},
-							{
-								"source": {
-									"name": "CartId",
-									"type": "String"
-								},
-								"sink": {
-									"path": "$['CartId']"
-								}
-							},
-							{
-								"source": {
-									"name": "ItemId",
-									"type": "Int32"
-								},
-								"sink": {
-									"path": "$['ItemId']"
-								}
-							},
-							{
-								"source": {
-									"name": "Quantity",
-									"type": "Int32"
-								},
-								"sink": {
-									"path": "$['Quantity']"
-								}
-							},
-							{
-								"source": {
-									"name": "DateCreated",
-									"type": "DateTime"
-								},
-								"sink": {
-									"path": "$['DateCreated']"
-								}
-							},
-							{
-								"source": {
-									"name": "type"
-								},
-								"sink": {
-									"path": "$['Type']"
+									"path": "$"
 								}
 							}
 						]
