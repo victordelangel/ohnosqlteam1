@@ -36,8 +36,56 @@
 						"type": "TabularTranslator",
 						"mappings": [
 							{
+								"source": {
+									"name": "CartItemId",
+									"type": "String"
+								},
 								"sink": {
-									"path": "$"
+									"path": "$['CartItemId']"
+								}
+							},
+							{
+								"source": {
+									"name": "CartId",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['CartId']"
+								}
+							},
+							{
+								"source": {
+									"name": "ItemId",
+									"type": "Int32"
+								},
+								"sink": {
+									"path": "$['ItemId']"
+								}
+							},
+							{
+								"source": {
+									"name": "Quantity",
+									"type": "Int32"
+								},
+								"sink": {
+									"path": "$['Quantity']"
+								}
+							},
+							{
+								"source": {
+									"name": "DateCreated",
+									"type": "DateTime"
+								},
+								"sink": {
+									"path": "$['DateCreated']"
+								}
+							},
+							{
+								"source": {
+									"name": "type"
+								},
+								"sink": {
+									"path": "$['type']"
 								}
 							}
 						]
@@ -130,7 +178,7 @@
 									"name": "type"
 								},
 								"sink": {
-									"path": "$['Type']"
+									"path": "$['type']"
 								}
 							}
 						]
@@ -268,7 +316,7 @@
 									"name": "type"
 								},
 								"sink": {
-									"path": "$['Type']"
+									"path": "$['type']"
 								}
 							}
 						]
@@ -451,7 +499,7 @@
 									"name": "type"
 								},
 								"sink": {
-									"path": "$['Type']"
+									"path": "$['type']"
 								}
 							}
 						]
@@ -562,7 +610,7 @@
 									"name": "type"
 								},
 								"sink": {
-									"path": "$['Type']"
+									"path": "$['type']"
 								}
 							}
 						]
@@ -673,7 +721,7 @@
 									"name": "type"
 								},
 								"sink": {
-									"path": "$['Type']"
+									"path": "$['type']"
 								}
 							}
 						]
@@ -883,7 +931,7 @@
 									"name": "type"
 								},
 								"sink": {
-									"path": "$['Type']"
+									"path": "$['type']"
 								}
 							}
 						]
@@ -936,8 +984,56 @@
 						"type": "TabularTranslator",
 						"mappings": [
 							{
+								"source": {
+									"name": "UserId",
+									"type": "Int32"
+								},
 								"sink": {
-									"path": "$"
+									"path": "$['UserId']"
+								}
+							},
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['Name']"
+								}
+							},
+							{
+								"source": {
+									"name": "Email",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['Email']"
+								}
+							},
+							{
+								"source": {
+									"name": "CategoryId",
+									"type": "Int32"
+								},
+								"sink": {
+									"path": "$['CategoryId']"
+								}
+							},
+							{
+								"source": {
+									"name": "Personality",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['Personality']"
+								}
+							},
+							{
+								"source": {
+									"name": "type"
+								},
+								"sink": {
+									"path": "$['type']"
 								}
 							}
 						]
