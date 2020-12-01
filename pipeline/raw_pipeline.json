@@ -87,7 +87,56 @@
 						"type": "CosmosDbSqlApiSink",
 						"writeBehavior": "insert"
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "CategoryId",
+									"type": "Int32"
+								},
+								"sink": {
+									"path": "$['CategoryId']"
+								}
+							},
+							{
+								"source": {
+									"name": "CategoryName",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['CategoryName']"
+								}
+							},
+							{
+								"source": {
+									"name": "Description",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['Description']"
+								}
+							},
+							{
+								"source": {
+									"name": "Products",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['Products']"
+								}
+							},
+							{
+								"source": {
+									"name": "Type"
+								},
+								"sink": {
+									"path": "$['Type']"
+								}
+							}
+						]
+					}
 				},
 				"inputs": [
 					{
