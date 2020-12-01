@@ -985,33 +985,6 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "UserId",
-									"type": "Int32"
-								},
-								"sink": {
-									"path": "$['UserId']"
-								}
-							},
-							{
-								"source": {
-									"name": "Name",
-									"type": "String"
-								},
-								"sink": {
-									"path": "$['Name']"
-								}
-							},
-							{
-								"source": {
-									"name": "Email",
-									"type": "String"
-								},
-								"sink": {
-									"path": "$['Email']"
-								}
-							},
-							{
-								"source": {
 									"name": "CategoryId",
 									"type": "Int32"
 								},
@@ -1020,20 +993,53 @@
 								}
 							},
 							{
-								"source": {
-									"name": "Personality",
-									"type": "String"
-								},
 								"sink": {
-									"path": "$['Personality']"
+									"path": "$['CategoryName']"
 								}
 							},
 							{
-								"source": {
-									"name": "type"
-								},
+								"sink": {
+									"path": "$['Description']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['Products']"
+								}
+							},
+							{
 								"sink": {
 									"path": "$['Type']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['id']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['_rid']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['_self']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['_etag']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['_attachments']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['_ts']"
 								}
 							}
 						]
