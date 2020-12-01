@@ -259,7 +259,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "CosmosDbSqlApiCollection1",
+						"referenceName": "CosmosDbSqlApiCollectionChallenge3",
 						"type": "DatasetReference"
 					}
 				]
