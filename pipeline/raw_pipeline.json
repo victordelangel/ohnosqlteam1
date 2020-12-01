@@ -82,7 +82,7 @@
 							},
 							{
 								"source": {
-									"name": "Type"
+									"name": "type"
 								},
 								"sink": {
 									"path": "$['Type']"
@@ -313,7 +313,7 @@
 							},
 							{
 								"source": {
-									"name": "Type"
+									"name": "type"
 								},
 								"sink": {
 									"path": "$['Type']"
@@ -496,7 +496,7 @@
 							},
 							{
 								"source": {
-									"name": "Type"
+									"name": "type"
 								},
 								"sink": {
 									"path": "$['Type']"
@@ -607,7 +607,7 @@
 							},
 							{
 								"source": {
-									"name": "Type"
+									"name": "type"
 								},
 								"sink": {
 									"path": "$['Type']"
@@ -718,7 +718,7 @@
 							},
 							{
 								"source": {
-									"name": "Type"
+									"name": "type"
 								},
 								"sink": {
 									"path": "$['Type']"
@@ -928,7 +928,7 @@
 							},
 							{
 								"source": {
-									"name": "Type"
+									"name": "type"
 								},
 								"sink": {
 									"path": "$['Type']"
