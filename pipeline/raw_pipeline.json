@@ -5,14 +5,7 @@
 			{
 				"name": "Rawcopy_cartitem",
 				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "rawcopy_item",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -55,14 +48,7 @@
 			{
 				"name": "rawcopy_category",
 				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "rawcopy_user",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -154,26 +140,7 @@
 			{
 				"name": "rawcopy_event",
 				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "Rawcopy_cartitem",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					},
-					{
-						"activity": "rawcopy_itemaggregate",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					},
-					{
-						"activity": "rawcopy_orderdetails",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -216,14 +183,7 @@
 			{
 				"name": "rawcopy_item",
 				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "rawcopy_category",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -248,7 +208,98 @@
 						"type": "CosmosDbSqlApiSink",
 						"writeBehavior": "insert"
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"sink": {
+									"path": "$['UserId']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['Name']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['Email']"
+								}
+							},
+							{
+								"source": {
+									"name": "CategoryId",
+									"type": "Int32"
+								},
+								"sink": {
+									"path": "$['CategoryId']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['Personality']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['id']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['_rid']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['_self']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['_etag']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['_attachments']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['_ts']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['CategoryName']"
+								}
+							},
+							{
+								"source": {
+									"name": "Description",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['Description']"
+								}
+							},
+							{
+								"sink": {
+									"path": "$['Products']"
+								}
+							},
+							{
+								"source": {
+									"name": "Type"
+								},
+								"sink": {
+									"path": "$['Type']"
+								}
+							}
+						]
+					}
 				},
 				"inputs": [
 					{
@@ -266,14 +317,7 @@
 			{
 				"name": "rawcopy_itemaggregate",
 				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "rawcopy_item",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -316,14 +360,7 @@
 			{
 				"name": "rawcopy_orderdetails",
 				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "rawcopy_orders",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -366,14 +403,7 @@
 			{
 				"name": "rawcopy_orders",
 				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "rawcopy_item",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
