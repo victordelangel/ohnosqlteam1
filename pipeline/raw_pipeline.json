@@ -976,7 +976,7 @@
 					},
 					"sink": {
 						"type": "CosmosDbSqlApiSink",
-						"writeBehavior": "upsert",
+						"writeBehavior": "insert",
 						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
@@ -984,62 +984,8 @@
 						"type": "TabularTranslator",
 						"mappings": [
 							{
-								"source": {
-									"name": "CategoryId",
-									"type": "Int32"
-								},
 								"sink": {
-									"path": "$['CategoryId']"
-								}
-							},
-							{
-								"sink": {
-									"path": "$['CategoryName']"
-								}
-							},
-							{
-								"sink": {
-									"path": "$['Description']"
-								}
-							},
-							{
-								"sink": {
-									"path": "$['Products']"
-								}
-							},
-							{
-								"sink": {
-									"path": "$['Type']"
-								}
-							},
-							{
-								"sink": {
-									"path": "$['id']"
-								}
-							},
-							{
-								"sink": {
-									"path": "$['_rid']"
-								}
-							},
-							{
-								"sink": {
-									"path": "$['_self']"
-								}
-							},
-							{
-								"sink": {
-									"path": "$['_etag']"
-								}
-							},
-							{
-								"sink": {
-									"path": "$['_attachments']"
-								}
-							},
-							{
-								"sink": {
-									"path": "$['_ts']"
+									"path": "$"
 								}
 							}
 						]
