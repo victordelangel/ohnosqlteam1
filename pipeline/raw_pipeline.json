@@ -19,7 +19,7 @@
 						"type": "AzureSqlSource",
 						"additionalColumns": [
 							{
-								"name": "Type",
+								"name": "type",
 								"value": "CartItems"
 							}
 						],
@@ -28,7 +28,8 @@
 					},
 					"sink": {
 						"type": "CosmosDbSqlApiSink",
-						"writeBehavior": "insert"
+						"writeBehavior": "upsert",
+						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
 					"translator": {
@@ -120,7 +121,7 @@
 						"type": "AzureSqlSource",
 						"additionalColumns": [
 							{
-								"name": "Type",
+								"name": "type",
 								"value": "Category"
 							}
 						],
@@ -129,7 +130,8 @@
 					},
 					"sink": {
 						"type": "CosmosDbSqlApiSink",
-						"writeBehavior": "insert"
+						"writeBehavior": "upsert",
+						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
 					"translator": {
@@ -212,7 +214,7 @@
 						"type": "AzureSqlSource",
 						"additionalColumns": [
 							{
-								"name": "Type",
+								"name": "type",
 								"value": "Event"
 							}
 						],
@@ -221,7 +223,8 @@
 					},
 					"sink": {
 						"type": "CosmosDbSqlApiSink",
-						"writeBehavior": "insert"
+						"writeBehavior": "upsert",
+						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
 					"translator": {
@@ -349,7 +352,7 @@
 						"type": "AzureSqlSource",
 						"additionalColumns": [
 							{
-								"name": "Type",
+								"name": "type",
 								"value": "Item"
 							}
 						],
@@ -358,7 +361,8 @@
 					},
 					"sink": {
 						"type": "CosmosDbSqlApiSink",
-						"writeBehavior": "insert"
+						"writeBehavior": "upsert",
+						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
 					"translator": {
@@ -531,7 +535,7 @@
 						"type": "AzureSqlSource",
 						"additionalColumns": [
 							{
-								"name": "Type",
+								"name": "type",
 								"value": "ItemAggregate"
 							}
 						],
@@ -540,7 +544,8 @@
 					},
 					"sink": {
 						"type": "CosmosDbSqlApiSink",
-						"writeBehavior": "insert"
+						"writeBehavior": "upsert",
+						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
 					"translator": {
@@ -641,7 +646,7 @@
 						"type": "AzureSqlSource",
 						"additionalColumns": [
 							{
-								"name": "Type",
+								"name": "type",
 								"value": "OrderDetails"
 							}
 						],
@@ -650,7 +655,8 @@
 					},
 					"sink": {
 						"type": "CosmosDbSqlApiSink",
-						"writeBehavior": "insert"
+						"writeBehavior": "upsert",
+						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
 					"translator": {
@@ -751,7 +757,7 @@
 						"type": "AzureSqlSource",
 						"additionalColumns": [
 							{
-								"name": "Type",
+								"name": "type",
 								"value": "Orders"
 							}
 						],
@@ -760,7 +766,8 @@
 					},
 					"sink": {
 						"type": "CosmosDbSqlApiSink",
-						"writeBehavior": "insert"
+						"writeBehavior": "upsert",
+						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
 					"translator": {
@@ -960,7 +967,7 @@
 						"type": "AzureSqlSource",
 						"additionalColumns": [
 							{
-								"name": "Type",
+								"name": "type",
 								"value": "User"
 							}
 						],
@@ -969,7 +976,8 @@
 					},
 					"sink": {
 						"type": "CosmosDbSqlApiSink",
-						"writeBehavior": "insert"
+						"writeBehavior": "upsert",
+						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
 					"translator": {
