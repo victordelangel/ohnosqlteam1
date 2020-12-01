@@ -30,7 +30,65 @@
 						"type": "CosmosDbSqlApiSink",
 						"writeBehavior": "insert"
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "CartItemId",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['CartItemId']"
+								}
+							},
+							{
+								"source": {
+									"name": "CartId",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['CartId']"
+								}
+							},
+							{
+								"source": {
+									"name": "ItemId",
+									"type": "Int32"
+								},
+								"sink": {
+									"path": "$['ItemId']"
+								}
+							},
+							{
+								"source": {
+									"name": "Quantity",
+									"type": "Int32"
+								},
+								"sink": {
+									"path": "$['Quantity']"
+								}
+							},
+							{
+								"source": {
+									"name": "DateCreated",
+									"type": "DateTime"
+								},
+								"sink": {
+									"path": "$['DateCreated']"
+								}
+							},
+							{
+								"source": {
+									"name": "Type"
+								},
+								"sink": {
+									"path": "$['Type']"
+								}
+							}
+						]
+					}
 				},
 				"inputs": [
 					{
@@ -165,7 +223,101 @@
 						"type": "CosmosDbSqlApiSink",
 						"writeBehavior": "insert"
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "id",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['id']"
+								}
+							},
+							{
+								"source": {
+									"name": "event",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['event']"
+								}
+							},
+							{
+								"source": {
+									"name": "userId",
+									"type": "Int32"
+								},
+								"sink": {
+									"path": "$['userId']"
+								}
+							},
+							{
+								"source": {
+									"name": "itemId",
+									"type": "Int32"
+								},
+								"sink": {
+									"path": "$['itemId']"
+								}
+							},
+							{
+								"source": {
+									"name": "orderId",
+									"type": "Int32"
+								},
+								"sink": {
+									"path": "$['orderId']"
+								}
+							},
+							{
+								"source": {
+									"name": "contentId",
+									"type": "Int32"
+								},
+								"sink": {
+									"path": "$['contentId']"
+								}
+							},
+							{
+								"source": {
+									"name": "sessionId",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['sessionId']"
+								}
+							},
+							{
+								"source": {
+									"name": "created",
+									"type": "DateTime"
+								},
+								"sink": {
+									"path": "$['created']"
+								}
+							},
+							{
+								"source": {
+									"name": "region",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['region']"
+								}
+							},
+							{
+								"source": {
+									"name": "Type"
+								},
+								"sink": {
+									"path": "$['Type']"
+								}
+							}
+						]
+					}
 				},
 				"inputs": [
 					{
@@ -213,67 +365,39 @@
 						"type": "TabularTranslator",
 						"mappings": [
 							{
+								"source": {
+									"name": "ItemId",
+									"type": "Int32"
+								},
 								"sink": {
-									"path": "$['UserId']"
-								}
-							},
-							{
-								"sink": {
-									"path": "$['Name']"
-								}
-							},
-							{
-								"sink": {
-									"path": "$['Email']"
+									"path": "$['ItemId']"
 								}
 							},
 							{
 								"source": {
-									"name": "CategoryId",
+									"name": "VoteCount",
 									"type": "Int32"
 								},
 								"sink": {
-									"path": "$['CategoryId']"
+									"path": "$['VoteCount']"
 								}
 							},
 							{
+								"source": {
+									"name": "ProductName",
+									"type": "String"
+								},
 								"sink": {
-									"path": "$['Personality']"
+									"path": "$['ProductName']"
 								}
 							},
 							{
+								"source": {
+									"name": "ImdbId",
+									"type": "Int32"
+								},
 								"sink": {
-									"path": "$['id']"
-								}
-							},
-							{
-								"sink": {
-									"path": "$['_rid']"
-								}
-							},
-							{
-								"sink": {
-									"path": "$['_self']"
-								}
-							},
-							{
-								"sink": {
-									"path": "$['_etag']"
-								}
-							},
-							{
-								"sink": {
-									"path": "$['_attachments']"
-								}
-							},
-							{
-								"sink": {
-									"path": "$['_ts']"
-								}
-							},
-							{
-								"sink": {
-									"path": "$['CategoryName']"
+									"path": "$['ImdbId']"
 								}
 							},
 							{
@@ -286,8 +410,84 @@
 								}
 							},
 							{
+								"source": {
+									"name": "ImagePath",
+									"type": "String"
+								},
 								"sink": {
-									"path": "$['Products']"
+									"path": "$['ImagePath']"
+								}
+							},
+							{
+								"source": {
+									"name": "ThumbnailPath",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['ThumbnailPath']"
+								}
+							},
+							{
+								"source": {
+									"name": "UnitPrice",
+									"type": "Decimal"
+								},
+								"sink": {
+									"path": "$['UnitPrice']"
+								}
+							},
+							{
+								"source": {
+									"name": "CategoryId",
+									"type": "Int32"
+								},
+								"sink": {
+									"path": "$['CategoryId']"
+								}
+							},
+							{
+								"source": {
+									"name": "Category",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['Category']"
+								}
+							},
+							{
+								"source": {
+									"name": "Popularity",
+									"type": "Decimal"
+								},
+								"sink": {
+									"path": "$['Popularity']"
+								}
+							},
+							{
+								"source": {
+									"name": "OriginalLanguage",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['OriginalLanguage']"
+								}
+							},
+							{
+								"source": {
+									"name": "ReleaseDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"path": "$['ReleaseDate']"
+								}
+							},
+							{
+								"source": {
+									"name": "VoteAverage",
+									"type": "Decimal"
+								},
+								"sink": {
+									"path": "$['VoteAverage']"
 								}
 							},
 							{
@@ -342,7 +542,74 @@
 						"type": "CosmosDbSqlApiSink",
 						"writeBehavior": "insert"
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "id",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['id']"
+								}
+							},
+							{
+								"source": {
+									"name": "ItemId",
+									"type": "Int32"
+								},
+								"sink": {
+									"path": "$['ItemId']"
+								}
+							},
+							{
+								"source": {
+									"name": "BuyCount",
+									"type": "Int32"
+								},
+								"sink": {
+									"path": "$['BuyCount']"
+								}
+							},
+							{
+								"source": {
+									"name": "ViewDetailsCount",
+									"type": "Int32"
+								},
+								"sink": {
+									"path": "$['ViewDetailsCount']"
+								}
+							},
+							{
+								"source": {
+									"name": "AddToCartCount",
+									"type": "Int32"
+								},
+								"sink": {
+									"path": "$['AddToCartCount']"
+								}
+							},
+							{
+								"source": {
+									"name": "VoteCount",
+									"type": "Int32"
+								},
+								"sink": {
+									"path": "$['VoteCount']"
+								}
+							},
+							{
+								"source": {
+									"name": "Type"
+								},
+								"sink": {
+									"path": "$['Type']"
+								}
+							}
+						]
+					}
 				},
 				"inputs": [
 					{
@@ -385,7 +652,74 @@
 						"type": "CosmosDbSqlApiSink",
 						"writeBehavior": "insert"
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "OrderDetailId",
+									"type": "Int32"
+								},
+								"sink": {
+									"path": "$['OrderDetailId']"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderId",
+									"type": "Int32"
+								},
+								"sink": {
+									"path": "$['OrderId']"
+								}
+							},
+							{
+								"source": {
+									"name": "Email",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['Email']"
+								}
+							},
+							{
+								"source": {
+									"name": "ProductId",
+									"type": "Int32"
+								},
+								"sink": {
+									"path": "$['ProductId']"
+								}
+							},
+							{
+								"source": {
+									"name": "Quantity",
+									"type": "Int32"
+								},
+								"sink": {
+									"path": "$['Quantity']"
+								}
+							},
+							{
+								"source": {
+									"name": "UnitPrice",
+									"type": "Decimal"
+								},
+								"sink": {
+									"path": "$['UnitPrice']"
+								}
+							},
+							{
+								"source": {
+									"name": "Type"
+								},
+								"sink": {
+									"path": "$['Type']"
+								}
+							}
+						]
+					}
 				},
 				"inputs": [
 					{
@@ -428,7 +762,173 @@
 						"type": "CosmosDbSqlApiSink",
 						"writeBehavior": "insert"
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "OrderId",
+									"type": "Int32"
+								},
+								"sink": {
+									"path": "$['OrderId']"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"path": "$['OrderDate']"
+								}
+							},
+							{
+								"source": {
+									"name": "FirstName",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['FirstName']"
+								}
+							},
+							{
+								"source": {
+									"name": "LastName",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['LastName']"
+								}
+							},
+							{
+								"source": {
+									"name": "Address",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['Address']"
+								}
+							},
+							{
+								"source": {
+									"name": "City",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['City']"
+								}
+							},
+							{
+								"source": {
+									"name": "State",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['State']"
+								}
+							},
+							{
+								"source": {
+									"name": "PostalCode",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['PostalCode']"
+								}
+							},
+							{
+								"source": {
+									"name": "Country",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['Country']"
+								}
+							},
+							{
+								"source": {
+									"name": "Phone",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['Phone']"
+								}
+							},
+							{
+								"source": {
+									"name": "SMSOptIn",
+									"type": "Boolean"
+								},
+								"sink": {
+									"path": "$['SMSOptIn']"
+								}
+							},
+							{
+								"source": {
+									"name": "SMSStatus",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['SMSStatus']"
+								}
+							},
+							{
+								"source": {
+									"name": "Email",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['Email']"
+								}
+							},
+							{
+								"source": {
+									"name": "ReceiptUrl",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['ReceiptUrl']"
+								}
+							},
+							{
+								"source": {
+									"name": "Total",
+									"type": "Decimal"
+								},
+								"sink": {
+									"path": "$['Total']"
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentTransactionId",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['PaymentTransactionId']"
+								}
+							},
+							{
+								"source": {
+									"name": "HasBeenShipped",
+									"type": "Boolean"
+								},
+								"sink": {
+									"path": "$['HasBeenShipped']"
+								}
+							},
+							{
+								"source": {
+									"name": "Type"
+								},
+								"sink": {
+									"path": "$['Type']"
+								}
+							}
+						]
+					}
 				},
 				"inputs": [
 					{
