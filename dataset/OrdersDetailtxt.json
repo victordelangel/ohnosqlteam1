@@ -1,0 +1,23 @@
+{
+	"name": "OrdersDetailtxt",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "OrdersBlob",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "@concat(pipeline().RunId,'.json')",
+				"folderPath": "Orders",
+				"container": "ordersdetailblob"
+			},
+			"columnDelimiter": "\t",
+			"escapeChar": "\\",
+			"quoteChar": ""
+		},
+		"schema": []
+	}
+}
