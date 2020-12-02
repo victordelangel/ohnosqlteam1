@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
+				"name": "SqlJsonToBlobText Orders",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -17,29 +17,75 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "Select * , ( \nselect  OrderDetailid, OrderID, Email, ProductID, Quantity, UnitPrice, (\nselect  *  from [dbo].[Item] i where od.ProductId = i.ItemId for json auto) as ProductData \nfrom [dbo].[OrderDetails] od where Od.Orderid = o.Orderid  for json auto) OrderDetailData from Orders o",
+						"sqlReaderQuery": "select [value] from OPENJSON((\n Select * , (\n             select OrderDetailid, \n                    OrderID, \n                    Email, \n                    ProductID, \n                    Quantity, \n                    UnitPrice, (\n\t\t\t\t\t           select * from [dbo].[Item] i \n\t\t\t\t\t\t\t   where od.ProductId = i.ItemId \n\t\t\t\t\t\t\t   for json auto\n                                ) as ProductData\n            from [dbo].[OrderDetails] od \n            where Od.Orderid = o.Orderid for json auto\n            ) OrderDetailData \nfrom Orders o FOR JSON PATH)\n)",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "OrdersQuery",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "OrdersDetailtxt",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "BlobJsonToCosmos Orders",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "SqlJsonToBlobText Orders",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
 					},
 					"sink": {
 						"type": "CosmosDbSqlApiSink",
 						"writeBehavior": "insert"
 					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"mappings": [
-							{
-								"sink": {
-									"path": "$"
-								}
-							}
-						]
-					}
+					"enableStaging": false
 				},
 				"inputs": [
 					{
-						"referenceName": "OrdersQuery",
+						"referenceName": "Json1",
 						"type": "DatasetReference"
 					}
 				],
